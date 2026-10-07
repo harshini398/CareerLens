@@ -1,0 +1,75 @@
+{
+  "Backend Developer": {
+    "jobs_analyzed": 226,
+    "market_demand": {
+      "Python": 57,
+      "AWS": 42,
+      "SQL": 33,
+      "Testing": 29,
+      "Azure": 22,
+      "Kubernetes": 21,
+      "Docker": 19,
+      "CI/CD": 19
+    },
+    "min_verification_score": 70
+  },
+  "Frontend Developer": {
+    "jobs_analyzed": 231,
+    "market_demand": {
+      "JavaScript": 68,
+      "React": 41,
+      "SQL": 36,
+      "Python": 35,
+      "Testing": 28,
+      "TypeScript": 19
+    },
+    "min_verification_score": 70
+  },
+  "Full Stack Developer": {
+    "jobs_analyzed": 420,
+    "market_demand": {
+      "JavaScript": 51,
+      "React": 45,
+      "AWS": 45,
+      "SQL": 40,
+      "Testing": 39,
+      "Python": 31,
+      "TypeScript": 31,
+      "Azure": 29,
+      "Docker": 26,
+      "Kubernetes": 25,
+      "CI/CD": 23,
+      "Git": 21,
+      "Node.js": 17,
+      "GCP": 16
+    },
+    "min_verification_score": 70
+  },
+  "Data Engineer": {
+    "jobs_analyzed": 490,
+    "market_demand": {
+      "SQL": 70,
+      "Python": 64,
+      "AWS": 48,
+      "Azure": 39,
+      "Data Pipelines": 36,
+      "Testing": 20,
+      "Machine Learning": 18
+    },
+    "min_verification_score": 70
+  },
+  "DevOps Engineer": {
+    "jobs_analyzed": 782,
+    "market_demand": {
+      "Python": 36,
+      "AWS": 36,
+      "Azure": 36,
+      "CI/CD": 30,
+      "Kubernetes": 28,
+      "Docker": 22,
+      "Testing": 21,
+      "SQL": 15
+    },
+    "min_verification_score": 70
+  }
+}

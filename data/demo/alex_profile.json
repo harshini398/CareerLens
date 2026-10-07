@@ -1,0 +1,58 @@
+{
+  "candidate": {
+    "name": "Alex",
+    "email": "alex@example.com",
+    "phone": "+1-555-0199",
+    "target_role": "Backend Developer",
+    "github_url": "https://github.com/alex-dev"
+  },
+  "skills": [
+    {"name": "Python", "claimed_level": "Expert", "years": 3, "source": "resume"},
+    {"name": "SQL", "claimed_level": "Advanced", "years": 2, "source": "resume"},
+    {"name": "FastAPI", "claimed_level": "Advanced", "years": 2, "source": "resume"},
+    {"name": "Docker", "claimed_level": "Advanced", "years": 1.5, "source": "resume"},
+    {"name": "AWS", "claimed_level": "Intermediate", "years": 1, "source": "resume"}
+  ],
+  "projects": [
+    {
+      "name": "E-Commerce REST API",
+      "description": "High throughput microservice handling checkout and order processing.",
+      "technologies": ["Python", "FastAPI", "PostgreSQL", "Docker"],
+      "github_url": "https://github.com/alex-dev/ecommerce-api"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Tech Labs",
+      "role": "Backend Intern",
+      "duration": "6 months",
+      "technologies": ["Python", "SQL"]
+    }
+  ],
+  "claims": [
+    {
+      "id": "CL001",
+      "text": "Expert in Python with 3 years experience building APIs",
+      "type": "TECHNICAL",
+      "skill": "Python",
+      "claimed_level": "Expert",
+      "verifiable": true
+    },
+    {
+      "id": "CL002",
+      "text": "Built FastAPI backend serving 10,000 active users",
+      "type": "SCALE",
+      "skill": "FastAPI",
+      "metric": "10,000 users",
+      "verifiable": true
+    },
+    {
+      "id": "CL003",
+      "text": "Advanced Docker containerization and multi-container deployment",
+      "type": "TECHNICAL",
+      "skill": "Docker",
+      "claimed_level": "Advanced",
+      "verifiable": true
+    }
+  ]
+}

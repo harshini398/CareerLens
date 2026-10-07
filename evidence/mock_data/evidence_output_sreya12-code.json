@@ -1,0 +1,101 @@
+{
+  "candidate": {
+    "name": "Alex Kumar",
+    "github_username": "sreya12-code",
+    "target_role": "Backend Developer"
+  },
+  "summary": {
+    "repositories_analyzed": 1,
+    "originality_confidence": 80,
+    "languages_distribution": {
+      "TypeScript": 90.4,
+      "JavaScript": 5.1,
+      "CSS": 2.7,
+      "HTML": 1.8
+    },
+    "engineering_summary": {
+      "total_analyzed_repos": 1,
+      "docker_repos_count": 0,
+      "tested_repos_count": 0,
+      "ci_cd_repos_count": 1,
+      "most_used_language": "TypeScript"
+    }
+  },
+  "skills_evidence": {
+    "React": {
+      "skill": "React",
+      "evidence_score": 66,
+      "level": "Moderate",
+      "repo_count": 1,
+      "repos": [
+        "birth-gift-generator"
+      ]
+    },
+    "Git": {
+      "skill": "Git",
+      "evidence_score": 66,
+      "level": "Moderate",
+      "repo_count": 1,
+      "repos": [
+        "birth-gift-generator"
+      ]
+    }
+  },
+  "claims_verification": [
+    {
+      "claim_id": "CL001",
+      "claim_text": "Expert in Python backend architecture",
+      "skill": "Python",
+      "claimed_level": "Expert",
+      "evidence_score": 0,
+      "status": "UNSUPPORTED",
+      "reason": "No observable evidence (0 config files or repositories) found for Python.",
+      "repositories": [],
+      "impact_on_readiness": -4
+    },
+    {
+      "claim_id": "CL002",
+      "claim_text": "Built high-performance REST APIs",
+      "skill": "REST APIs",
+      "claimed_level": "Intermediate",
+      "evidence_score": 0,
+      "status": "UNSUPPORTED",
+      "reason": "No observable evidence (0 config files or repositories) found for REST APIs.",
+      "repositories": [],
+      "impact_on_readiness": -4
+    },
+    {
+      "claim_id": "CL003",
+      "claim_text": "Production containerization using Docker & Docker Compose",
+      "skill": "Docker",
+      "claimed_level": "Advanced",
+      "evidence_score": 0,
+      "status": "UNSUPPORTED",
+      "reason": "No observable evidence (0 config files or repositories) found for Docker.",
+      "repositories": [],
+      "impact_on_readiness": -4
+    },
+    {
+      "claim_id": "CL004",
+      "claim_text": "Automated unit and integration testing",
+      "skill": "Testing",
+      "claimed_level": "Intermediate",
+      "evidence_score": 0,
+      "status": "UNSUPPORTED",
+      "reason": "No observable evidence (0 config files or repositories) found for Testing.",
+      "repositories": [],
+      "impact_on_readiness": -4
+    },
+    {
+      "claim_id": "CL005",
+      "claim_text": "Relational database schema design with SQL",
+      "skill": "SQL",
+      "claimed_level": "Intermediate",
+      "evidence_score": 0,
+      "status": "UNSUPPORTED",
+      "reason": "No observable evidence (0 config files or repositories) found for SQL.",
+      "repositories": [],
+      "impact_on_readiness": -4
+    }
+  ]
+}

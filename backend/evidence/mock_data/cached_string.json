@@ -1,0 +1,12 @@
+{
+  "username": "string",
+  "collected_at": "2026-10-07T18:57:11.847608+00:00",
+  "profile": {
+    "name": null,
+    "bio": null,
+    "public_repos": 0,
+    "followers": 4,
+    "created_at": "2016-06-24T16:41:38Z"
+  },
+  "repositories": []
+}

@@ -65,7 +65,7 @@ if __name__ == "__main__":
     print(f"{'CLAIMED SKILL':<15} | {'LEVEL':<12} | {'EVIDENCE':<10} | {'STATUS'}")
     print("-" * 65)
     for c in result["claims_verification"]:
-        status_icon = "✅ VERIFIED" if c['status'] == "VERIFIED" else ("🟡 PARTIAL" if c['status'] == "PARTIAL" else "❌ UNSUPPORTED")
+        status_icon = "[VERIFIED]" if c['status'] == "VERIFIED" else ("[PARTIAL]" if c['status'] == "PARTIAL" else "[UNSUPPORTED]")
         print(f"{c['skill']:<15} | {c['claimed_level']:<12} | {c['evidence_score']:<10} | {status_icon}")
     
     print("-" * 65)

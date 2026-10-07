@@ -39,6 +39,20 @@
       "skill": "SQL",
       "claimed_level": "Intermediate",
       "source": "resume"
+    },
+    {
+      "id": "CL006",
+      "text": "Frontend web application development using React",
+      "skill": "React",
+      "claimed_level": "Intermediate",
+      "source": "resume"
+    },
+    {
+      "id": "CL007",
+      "text": "Version control and Git collaboration workflows",
+      "skill": "Git",
+      "claimed_level": "Intermediate",
+      "source": "resume"
     }
   ]
 }

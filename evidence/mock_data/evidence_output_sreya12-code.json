@@ -22,8 +22,8 @@
     }
   },
   "skills_evidence": {
-    "React": {
-      "skill": "React",
+    "Git": {
+      "skill": "Git",
       "evidence_score": 66,
       "level": "Moderate",
       "repo_count": 1,
@@ -31,8 +31,8 @@
         "birth-gift-generator"
       ]
     },
-    "Git": {
-      "skill": "Git",
+    "React": {
+      "skill": "React",
       "evidence_score": 66,
       "level": "Moderate",
       "repo_count": 1,
@@ -51,6 +51,7 @@
       "status": "UNSUPPORTED",
       "reason": "No observable evidence (0 config files or repositories) found for Python.",
       "repositories": [],
+      "evidence_sources": [],
       "impact_on_readiness": -4
     },
     {
@@ -62,6 +63,7 @@
       "status": "UNSUPPORTED",
       "reason": "No observable evidence (0 config files or repositories) found for REST APIs.",
       "repositories": [],
+      "evidence_sources": [],
       "impact_on_readiness": -4
     },
     {
@@ -73,6 +75,7 @@
       "status": "UNSUPPORTED",
       "reason": "No observable evidence (0 config files or repositories) found for Docker.",
       "repositories": [],
+      "evidence_sources": [],
       "impact_on_readiness": -4
     },
     {
@@ -84,6 +87,7 @@
       "status": "UNSUPPORTED",
       "reason": "No observable evidence (0 config files or repositories) found for Testing.",
       "repositories": [],
+      "evidence_sources": [],
       "impact_on_readiness": -4
     },
     {
@@ -95,7 +99,60 @@
       "status": "UNSUPPORTED",
       "reason": "No observable evidence (0 config files or repositories) found for SQL.",
       "repositories": [],
+      "evidence_sources": [],
       "impact_on_readiness": -4
+    },
+    {
+      "claim_id": "CL006",
+      "claim_text": "Frontend web application development using React",
+      "skill": "React",
+      "claimed_level": "Intermediate",
+      "evidence_score": 66,
+      "status": "PARTIAL",
+      "reason": "Moderate observable evidence found across 1 repositories.",
+      "repositories": [
+        "birth-gift-generator"
+      ],
+      "evidence_sources": [
+        {
+          "repo_name": "birth-gift-generator",
+          "url": "https://github.com/sreya12-code/birth-gift-generator",
+          "proof_files": [
+            "eslint.config.js",
+            "package-lock.json",
+            "package.json",
+            "postcss.config.js",
+            "tailwind.config.js"
+          ]
+        }
+      ],
+      "impact_on_readiness": 0
+    },
+    {
+      "claim_id": "CL007",
+      "claim_text": "Version control and Git collaboration workflows",
+      "skill": "Git",
+      "claimed_level": "Intermediate",
+      "evidence_score": 66,
+      "status": "PARTIAL",
+      "reason": "Moderate observable evidence found across 1 repositories.",
+      "repositories": [
+        "birth-gift-generator"
+      ],
+      "evidence_sources": [
+        {
+          "repo_name": "birth-gift-generator",
+          "url": "https://github.com/sreya12-code/birth-gift-generator",
+          "proof_files": [
+            "eslint.config.js",
+            "package-lock.json",
+            "package.json",
+            "postcss.config.js",
+            "tailwind.config.js"
+          ]
+        }
+      ],
+      "impact_on_readiness": 0
     }
   ]
 }

@@ -22,8 +22,8 @@
     }
   },
   "skills_evidence": {
-    "Git": {
-      "skill": "Git",
+    "React": {
+      "skill": "React",
       "evidence_score": 66,
       "level": "Moderate",
       "repo_count": 1,
@@ -31,8 +31,8 @@
         "birth-gift-generator"
       ]
     },
-    "React": {
-      "skill": "React",
+    "Git": {
+      "skill": "Git",
       "evidence_score": 66,
       "level": "Moderate",
       "repo_count": 1,
@@ -154,5 +154,75 @@
       ],
       "impact_on_readiness": 0
     }
-  ]
+  ],
+  "leetcode_evidence": {
+    "platform": "LeetCode",
+    "handle": "sreya12-code",
+    "verified": false,
+    "ranking": 0,
+    "total_solved": 0,
+    "breakdown": {},
+    "evidence_score": 0,
+    "skills_verified": []
+  },
+  "design_portfolio": {
+    "source": "Figma",
+    "url": "https://www.figma.com/@portfolio",
+    "verified": true,
+    "evidence_score": 75,
+    "rubric_breakdown": {
+      "component_architecture": 85,
+      "prototype_interactivity": 65,
+      "layout_grid_consistency": 80,
+      "design_system_usage": 80
+    },
+    "verified_skills": [
+      "Figma",
+      "UI/UX Design",
+      "Wireframing",
+      "Prototyping"
+    ],
+    "highlights": [
+      "Interactive prototype detected",
+      "Consistent UI component structure"
+    ]
+  },
+  "contradictions": [
+    {
+      "type": "UNSUPPORTED_PROFICIENCY_CLAIM",
+      "severity": "HIGH",
+      "skill": "Python",
+      "claim_text": "Expert in Python backend architecture",
+      "observation": "Candidate claims 'Expert in Python', but 0 repositories or manifests reference this technology.",
+      "penalty": -5
+    },
+    {
+      "type": "UNSUPPORTED_PROFICIENCY_CLAIM",
+      "severity": "HIGH",
+      "skill": "Docker",
+      "claim_text": "Production containerization using Docker & Docker Compose",
+      "observation": "Candidate claims 'Advanced in Docker', but 0 repositories or manifests reference this technology.",
+      "penalty": -5
+    }
+  ],
+  "timeline_analysis": {
+    "learning_velocity_score": 74,
+    "velocity_tier": "Moderate",
+    "skill_timeline": [
+      {
+        "skill": "React",
+        "first_practiced": "Jun 2026",
+        "latest_practiced": "Jun 2026",
+        "total_projects": 1,
+        "is_current": true
+      },
+      {
+        "skill": "Git",
+        "first_practiced": "Jun 2026",
+        "latest_practiced": "Jun 2026",
+        "total_projects": 1,
+        "is_current": true
+      }
+    ]
+  }
 }

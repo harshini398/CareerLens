@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.api.mock_analysis import router as mock_router
 from app.api.candidates import router as candidates_router
 from app.api.integration import router as integration_router
@@ -9,6 +10,15 @@ from app.models.models import CandidateModel, ReadinessScoreModel, AnalysisRunMo
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="CareerLens API", version="1.0.0")
+
+# Enable CORS so your frontend can communicate with the backend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows requests from any frontend origin during development
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(mock_router)
 app.include_router(candidates_router)

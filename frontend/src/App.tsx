@@ -9,12 +9,11 @@ import {
 } from './pages'
 import { analyzeProfile } from './services/api'
 import type { AnalysisResult } from './types'
-import AdminWeights from './pages/AdminWeights'
-import CandidateCard from './components/CandidateCard'
-import Interview from './pages/Interview'
+import { InterviewChatPage } from './pages/InterviewChatPage'
+import { ProgressPage } from './pages/ProgressPage'
+import { RecruiterJdPage } from './pages/RecruiterJdPage'
+import { WeightAdminPage } from './pages/WeightAdminPage'
 import Onboarding from './pages/Onboarding'
-import Progress from './pages/Progress'
-import RecruiterJd from './pages/RecruiterJd'
 import './design.css'
 import './career.css'
 
@@ -44,19 +43,18 @@ function App() {
           <Route path="/analysis" element={<Layout />}><Route index element={<AnalysisPage />} /></Route>
           <Route element={<Layout />}>
             <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/gaps" element={<GapsPage />} />
+            <Route path="/progress" element={<ProgressPage />} />
+            <Route path="/interview" element={<InterviewChatPage />} />
+            <Route path="/recruiter/jd" element={<RecruiterJdPage />} />
+            <Route path="/admin/weights" element={<WeightAdminPage />} />
+            <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/evidence" element={<EvidencePage />} />
             <Route path="/roles" element={<RolesPage />} />
-            <Route path="/gaps" element={<GapsPage />} />
             <Route path="/roadmap" element={<RoadmapPage />} />
             <Route path="/what-if" element={<WhatIfPage />} />
             <Route path="/placement" element={<PlacementPage />} />
           </Route>
-          <Route path="/onboarding" element={<Onboarding />} />
-          <Route path="/progress" element={<Progress />} />
-          <Route path="/admin/weights" element={<AdminWeights />} />
-          <Route path="/recruiter/jd" element={<RecruiterJd />} />
-          <Route path="/interview" element={<Interview />} />
-          <Route path="/candidate-card" element={<CandidateCard />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>

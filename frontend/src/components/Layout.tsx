@@ -1,7 +1,7 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import {
   Activity, ArrowUpRight, BookOpenCheck, BriefcaseBusiness, ChartNoAxesCombined,
-  CircleHelp, ClipboardCheck, FileText, Gauge, GitBranch, Layers3, Menu, Route,
+  CircleHelp, ClipboardCheck, FileText, Gauge, Layers3, Menu,
   Sparkles, Target, X,
 } from 'lucide-react'
 import { useState } from 'react'
@@ -9,11 +9,17 @@ import { useCareerLens } from '../context'
 
 const candidateLinks = [
   { to: '/dashboard', label: 'Overview', icon: Gauge },
-  { to: '/evidence', label: 'Claim evidence', icon: GitBranch },
-  { to: '/roles', label: 'Role fit', icon: Target },
-  { to: '/gaps', label: 'Skill gaps', icon: Layers3 },
-  { to: '/roadmap', label: 'Roadmap', icon: Route },
-  { to: '/what-if', label: 'What-if lab', icon: Sparkles },
+  { to: '/gaps', label: 'Skill Gaps', icon: Layers3 },
+  { to: '/progress', label: 'Progress', icon: ChartNoAxesCombined },
+  { to: '/interview', label: 'AI Interview', icon: Sparkles },
+]
+
+const recruiterLinks = [
+  { to: '/recruiter/jd', label: 'JD Matcher', icon: BriefcaseBusiness },
+]
+
+const adminLinks = [
+  { to: '/admin/weights', label: 'Scoring Weights', icon: Target },
 ]
 
 const titleByPath: Record<string, { title: string; eyebrow: string }> = {
@@ -46,15 +52,28 @@ export function Layout() {
           {candidateLinks.map(({ to, label, icon: Icon }) => (
             <NavLink key={to} to={to} className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
               <Icon size={17} strokeWidth={1.8} /> <span>{label}</span>
-              {to === '/evidence' && <span className="nav-count">{analysis.claims.length}</span>}
+              {to === '/dashboard' && <span className="nav-count">{analysis.claims.length}</span>}
             </NavLink>
           ))}
         </nav>
         <div className="sidebar-divider" />
-        <div className="sidebar-label">FOR PLACEMENT TEAMS</div>
-        <NavLink to="/placement" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
-          <ChartNoAxesCombined size={17} strokeWidth={1.8} /><span>Placement insights</span>
-        </NavLink>
+        <div className="sidebar-label">RECRUITER PORTAL</div>
+        <nav className="main-nav" aria-label="Recruiter navigation">
+          {recruiterLinks.map(({ to, label, icon: Icon }) => (
+            <NavLink key={to} to={to} className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
+              <Icon size={17} strokeWidth={1.8} /> <span>{label}</span>
+            </NavLink>
+          ))}
+        </nav>
+        <div className="sidebar-divider" />
+        <div className="sidebar-label">SYSTEM ADMIN</div>
+        <nav className="main-nav" aria-label="System administration navigation">
+          {adminLinks.map(({ to, label, icon: Icon }) => (
+            <NavLink key={to} to={to} className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
+              <Icon size={17} strokeWidth={1.8} /> <span>{label}</span>
+            </NavLink>
+          ))}
+        </nav>
         <div className="sidebar-spacer" />
         <div className="fairness-note">
           <span className="fairness-icon"><ClipboardCheck size={15} /></span>

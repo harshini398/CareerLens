@@ -8,14 +8,15 @@ import {
   Target, TrendingUp, WandSparkles, X,
 } from 'lucide-react'
 import {
-  Bar, BarChart, CartesianGrid, Legend, PolarAngleAxis, PolarGrid,
-  Radar, RadarChart, ResponsiveContainer, Tooltip, XAxis, YAxis,
+  Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from 'recharts'
 import { useCareerLens } from './context'
 import { availableRoles, demoAnalysis, placementData } from './data/demo'
 import { getWhatIf, normalizeGithub } from './services/api'
 import type { SkillEvidence, WhatIfResult } from './types'
 import { ExternalLink, PageTitle, ScoreBar, SmallMetric, StagePill, StatusBadge } from './components/Layout'
+import { RadarChartWidget } from './components/RadarChartWidget'
+import { ShareableCard } from './components/ShareableCard'
 
 const acceptedResumeTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain']
 
@@ -141,6 +142,7 @@ function ScoreRing({ score, label = 'READINESS' }: { score: number; label?: stri
 export function DashboardPage() {
   const { analysis } = useCareerLens()
   const navigate = useNavigate()
+  const [shareOpen, setShareOpen] = useState(false)
   const breakdown = [
     { label: 'Technical evidence', score: analysis.readiness.breakdown.technical, max: 30, color: 'green' },
     { label: 'Project quality', score: analysis.readiness.breakdown.projects, max: 20, color: 'green' },
@@ -168,7 +170,12 @@ export function DashboardPage() {
       <div className="panel gap-preview-panel"><div className="panel-heading-row"><div><span className="panel-kicker">HIGHEST-PRIORITY GAPS</span><h3>What needs more proof?</h3></div><Link to="/gaps" className="quiet-link">See all <ArrowRight size={13} /></Link></div>{gaps.map((gap) => <div className="gap-preview-row" key={gap.skill}><span className="gap-priority-dot" /><span>{gap.skill}</span><div className="gap-mini-track"><span style={{ width: `${gap.current}%` }} /></div><strong>{gap.gap}</strong></div>)}<Link className="gap-action" to="/roadmap"><span><Rocket size={15} /> Close the Docker gap first</span><ArrowRight size={14} /></Link></div>
       <div className="next-action-panel"><span className="next-action-icon"><WandSparkles size={17} /></span><span className="panel-kicker">HIGHEST-IMPACT NEXT STEP</span><h3>{analysis.explanation.recommendation}</h3><p>One focused project can improve testing, Docker, and deployment evidence together.</p><Link className="button button-light" to="/roadmap">See your roadmap <ArrowRight size={14} /></Link><span className="action-decoration">NEXT</span></div>
     </section>
+    <section className="dashboard-share-row">
+      <div><span className="section-eyebrow">SHAREABLE SCORECARD</span><h3>Export a verified candidate snapshot.</h3><p>Share evidence-backed readiness with recruiters while keeping the trust seal visible.</p></div>
+      <button className="button button-dark" onClick={() => setShareOpen(true)}>Share scorecard <ArrowRight size={14} /></button>
+    </section>
     <div className="fairness-inline"><ShieldCheck size={16} /><span><strong>Fairness by design.</strong> CareerLens evaluates observable evidence of skills and work, not identity, age, or institutional prestige.</span></div>
+    {shareOpen && <ShareableCard isModal onClose={() => setShareOpen(false)} />}
   </div>
 }
 
@@ -205,11 +212,11 @@ export function RolesPage() {
   const { analysis } = useCareerLens()
   const [activeRole, setActiveRole] = useState(analysis.roles[0]?.role ?? '')
   const selectedRole = analysis.roles.find((role) => role.role === activeRole) ?? analysis.roles[0]
-  const skills = analysis.gaps.filter((gap) => gap.weight > 0).slice(0, 7).map((gap) => ({ skill: gap.skill, candidate: gap.current, required: gap.required }))
+  const skills = analysis.gaps.filter((gap) => gap.weight > 0).slice(0, 7).map((gap) => ({ skill: gap.skill, evidence: gap.current, required: gap.required }))
   return <div className="page-stack"><PageTitle label="ROLE INTELLIGENCE" title="A fit is a starting point." detail="Role alignment combines your evidence with the skills typically required for each path. Use the gaps to decide what to demonstrate next." />
     <div className="role-fit-banner"><div><span className="section-eyebrow">CURRENT TARGET ROLE</span><h3>{analysis.candidate.targetRole}</h3><p>Best-fit roles are ranked using role-weighted evidence strength.</p></div><div className="fit-banner-score"><strong>{selectedRole?.score ?? 0}<small>%</small></strong><span>ROLE FIT</span></div><div className="fit-banner-meta"><span><BadgeCheck size={15} /> Evidence-backed score</span><span><Clock3 size={15} /> Snapshot: today</span></div></div>
     <section className="role-content-grid"><div className="panel role-list-panel"><div className="panel-heading-row"><div><span className="panel-kicker">ROLE MATCHES</span><h3>Where your evidence fits</h3></div><span className="role-match-count">{analysis.roles.length} roles</span></div><div className="role-list">{analysis.roles.map((role, index) => <button key={role.role} className={`role-fit-row ${role.role === activeRole ? 'role-fit-active' : ''}`} onClick={() => setActiveRole(role.role)}><span className="role-rank">0{index + 1}</span><span className="role-fit-label"><strong>{role.role}</strong><small>{role.summary}</small><span className="role-progress"><i style={{ width: `${role.score}%` }} /></span></span><strong className="role-fit-score">{role.score}<small>%</small></strong><ChevronRight size={15} /></button>)}</div><div className="role-method-note"><Info size={15} /><span>Role fit is not a hiring prediction. It compares evidence signals with the selected role’s requirements.</span></div></div>
-      <div className="panel role-requirements-panel"><div className="panel-heading-row"><div><span className="panel-kicker">ROLE REQUIREMENTS</span><h3>{selectedRole?.role ?? 'Target role'}</h3></div><Target size={17} /></div><div className="role-radar"><ResponsiveContainer width="100%" height="100%"><RadarChart data={skills} outerRadius="78%"><PolarGrid stroke="#334155" /><PolarAngleAxis dataKey="skill" tick={{ fill: '#cbd5e1', fontSize: 11 }} /><Radar name="Your evidence" dataKey="candidate" stroke="#facc15" fill="#facc15" fillOpacity={0.25} /><Radar name="Role threshold" dataKey="required" stroke="#fb7185" fill="#fb7185" fillOpacity={0.15} /><Legend iconType="circle" wrapperStyle={{ fontSize: '12px', color: '#cbd5e1' }} /><Tooltip /></RadarChart></ResponsiveContainer></div><div className="role-skill-list">{skills.slice(0, 5).map((skill) => <div className="role-skill-item" key={skill.skill}><span className="role-skill-name">{skill.skill}</span><div className="role-skill-track"><span className="skill-track-bar" style={{ width: `${Math.min(100, (skill.candidate / skill.required) * 100)}%` }} /></div><span className="role-skill-score"><strong>{skill.candidate}</strong><small> / {skill.required}</small></span></div>)}</div></div></section>
+      <div className="panel role-requirements-panel"><div className="panel-heading-row"><div><span className="panel-kicker">ROLE REQUIREMENTS</span><h3>{selectedRole?.role ?? 'Target role'}</h3></div><Target size={17} /></div><div className="role-radar"><RadarChartWidget data={skills} heightClass="h-full" /></div><div className="role-skill-list">{skills.slice(0, 5).map((skill) => <div className="role-skill-item" key={skill.skill}><span className="role-skill-name">{skill.skill}</span><div className="role-skill-track"><span className="skill-track-bar" style={{ width: `${Math.min(100, (skill.evidence / skill.required) * 100)}%` }} /></div><span className="role-skill-score"><strong>{skill.evidence}</strong><small> / {skill.required}</small></span></div>)}</div></div></section>
     <div className="role-bridge"><span className="bridge-icon"><Layers3 size={17} /></span><div><span className="section-eyebrow">ADJACENT OPPORTUNITY</span><strong>Data Engineer · {analysis.roles.find((role) => role.role === 'Data Engineer')?.score ?? 67}% fit</strong><p>Build on your Python and SQL evidence; a documented pipeline project could bridge the gap.</p></div><Link className="text-button text-button-green" to="/gaps">See bridge skills <ArrowRight size={14} /></Link></div>
   </div>
 }
@@ -217,10 +224,10 @@ export function RolesPage() {
 export function GapsPage() {
   const { analysis } = useCareerLens()
   const navigate = useNavigate()
-  const chartData = analysis.gaps.filter((gap) => gap.weight > 0).map((gap) => ({ skill: gap.skill, candidate: gap.current, required: gap.required }))
+  const chartData = analysis.gaps.filter((gap) => gap.weight > 0).map((gap) => ({ skill: gap.skill, evidence: gap.current, required: gap.required }))
   const priorities = analysis.gaps.filter((gap) => gap.gap < 0).sort((a, b) => a.gap - b.gap)
   return <div className="page-stack"><PageTitle label={`TARGET: ${analysis.candidate.targetRole.toUpperCase()}`} title="Make the next gap count." detail="Priorities reflect the role threshold and evidence currently available. A gap is a direction for action, not a judgment." action={<Link className="button button-outline" to="/roadmap">Open roadmap <ArrowRight size={14} /></Link>} />
-    <section className="gap-overview-row"><div className="panel gap-chart-panel"><div className="panel-heading-row"><div><span className="panel-kicker">YOUR EVIDENCE VS ROLE THRESHOLD</span><h3>Skill coverage</h3></div><div className="chart-legend"><span><i className="legend-green" /> Your evidence</span><span><i className="legend-coral" /> Role threshold</span></div></div><div className="gap-radar"><ResponsiveContainer width="100%" height="100%"><RadarChart data={chartData} outerRadius="78%"><PolarGrid stroke="#e5e5dc" /><PolarAngleAxis dataKey="skill" tick={{ fill: '#66716a', fontSize: 11 }} /><Radar name="Your evidence" dataKey="candidate" stroke="#347b5b" fill="#72a884" fillOpacity={0.23} /><Radar name="Role threshold" dataKey="required" stroke="#df816d" fill="#df816d" fillOpacity={0.07} /><Tooltip /></RadarChart></ResponsiveContainer></div><div className="chart-caption"><Info size={14} />The chart compares visible evidence against a typical role threshold.</div></div>
+    <section className="gap-overview-row"><div className="panel gap-chart-panel"><div className="panel-heading-row"><div><span className="panel-kicker">YOUR EVIDENCE VS ROLE THRESHOLD</span><h3>Skill coverage</h3></div><div className="chart-legend"><span><i className="legend-green" /> Your evidence</span><span><i className="legend-coral" /> Role threshold</span></div></div><div className="gap-radar"><RadarChartWidget data={chartData} heightClass="h-full" /></div><div className="chart-caption"><Info size={14} />The chart compares visible evidence against a typical role threshold.</div></div>
       <div className="gap-priority-panel"><div className="panel-heading-row"><div><span className="panel-kicker">PRIORITIZED GAPS</span><h3>Start here</h3></div><span className="gap-priority-count">{priorities.length} areas</span></div><div className="gap-priority-list">{priorities.slice(0, 4).map((gap, index) => <button className="gap-priority-item" key={gap.skill} onClick={() => navigate('/evidence', { state: { selectedSkill: gap.skill } })}><span className="priority-index">0{index + 1}</span><div><strong>{gap.skill}<span className={`priority-label priority-${gap.priority}`}>{gap.priority} priority</span></strong><small>{gap.evidenceNote}</small></div><span className="gap-number">{gap.gap}</span></button>)}</div><Link to="/roadmap" className="button button-dark gap-plan-button">Build evidence for these gaps <ArrowRight size={15} /></Link></div></section>
     <div className="panel gaps-table-panel"><div className="panel-heading-row"><div><span className="panel-kicker">ROLE REQUIREMENT COMPARISON</span><h3>What the role asks for</h3></div><span className="gap-table-note">Positive means evidence exceeds threshold</span></div><div className="gaps-table-scroll"><table className="data-table gaps-table"><thead><tr><th>SKILL</th><th>YOUR EVIDENCE</th><th>ROLE THRESHOLD</th><th>DIFFERENCE</th><th>PRIORITY</th><th></th></tr></thead><tbody>{analysis.gaps.map((gap) => <tr key={gap.skill}><td><strong>{gap.skill}</strong></td><td><div className="table-bar"><span style={{ width: `${gap.current}%` }} /></div><span>{gap.current}/100</span></td><td>{gap.required}/100</td><td className={gap.gap < 0 ? 'gap-negative' : 'gap-positive'}>{gap.gap > 0 ? '+' : ''}{gap.gap}</td><td><span className={`priority-label priority-${gap.priority}`}>{gap.gap < 0 ? gap.priority : 'covered'}</span></td><td><button className="table-arrow" onClick={() => navigate('/evidence', { state: { selectedSkill: gap.skill } })} aria-label={`See ${gap.skill} evidence`}><ArrowUpRight size={15} /></button></td></tr>)}</tbody></table></div></div>
   </div>

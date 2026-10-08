@@ -1,0 +1,58 @@
+{
+  "candidate": {
+    "name": "Alex Kumar",
+    "github_username": "sreya12-code",
+    "target_role": "Backend Developer"
+  },
+  "claims": [
+    {
+      "id": "CL001",
+      "text": "Expert in Python backend architecture",
+      "skill": "Python",
+      "claimed_level": "Expert",
+      "source": "resume"
+    },
+    {
+      "id": "CL002",
+      "text": "Built high-performance REST APIs",
+      "skill": "REST APIs",
+      "claimed_level": "Intermediate",
+      "source": "resume"
+    },
+    {
+      "id": "CL003",
+      "text": "Production containerization using Docker & Docker Compose",
+      "skill": "Docker",
+      "claimed_level": "Advanced",
+      "source": "resume"
+    },
+    {
+      "id": "CL004",
+      "text": "Automated unit and integration testing",
+      "skill": "Testing",
+      "claimed_level": "Intermediate",
+      "source": "resume"
+    },
+    {
+      "id": "CL005",
+      "text": "Relational database schema design with SQL",
+      "skill": "SQL",
+      "claimed_level": "Intermediate",
+      "source": "resume"
+    },
+    {
+      "id": "CL006",
+      "text": "Frontend web application development using React",
+      "skill": "React",
+      "claimed_level": "Intermediate",
+      "source": "resume"
+    },
+    {
+      "id": "CL007",
+      "text": "Version control and Git collaboration workflows",
+      "skill": "Git",
+      "claimed_level": "Intermediate",
+      "source": "resume"
+    }
+  ]
+}

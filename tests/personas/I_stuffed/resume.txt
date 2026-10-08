@@ -1,0 +1,13 @@
+Vikram Ray
+vikram.ray@example.com | github.com/vikram-dev
+Target Role: Full Stack Lead
+
+SUMMARY
+Docker Docker Docker Kubernetes Kubernetes AWS Cloud React Python Microservices.
+
+SKILLS
+Python, React, Docker, Kubernetes, AWS, Terraform, Kafka, Redis, GraphQL, Go, C++, SQL, PyTorch, Azure, GCP, CI/CD, Microservices, MongoDB, Elasticsearch, Jenkins
+
+PROJECTS
+Python App
+- Built a simple script using Python and Docker.

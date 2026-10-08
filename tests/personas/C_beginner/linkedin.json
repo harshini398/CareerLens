@@ -1,0 +1,17 @@
+{
+  "profile": {
+    "name": "Rohan Mehta",
+    "headline": "CS Student | Building daily | Learning Web Dev"
+  },
+  "certifications": [
+    {
+      "name": "Responsive Web Design",
+      "issuer": "freeCodeCamp",
+      "year": "2025"
+    }
+  ],
+  "activity": {
+    "post_count": 4,
+    "last_active": "1 week ago"
+  }
+}

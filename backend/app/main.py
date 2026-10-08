@@ -1,6 +1,5 @@
 ﻿"""
 CareerLens API Server.
-Connects Real Resume PDF -> Live GitHub Scanner -> Real Dataset Role Engine -> Multi-Role Matching -> Roadmap.
 """
 import sys
 import os
@@ -18,7 +17,7 @@ from typing import Optional, List, Dict, Any
 from app.ingestion.pdf_parser import extract_text_from_pdf, parse_resume_content
 from app.evidence.github_scanner import scan_github_profile
 from app.scoring.dataset_role_engine import get_role_benchmark
-from app.scoring.readiness_engine import calculate_readiness, get_verification_status
+from app.scoring.readiness_engine import calculate_readiness, CONFIG_WEIGHTS
 from app.scoring.gap_analyzer import analyze_skill_gaps
 from app.scoring.roadmap_engine import generate_roadmap
 from app.scoring.what_if_engine import simulate_what_if
@@ -74,7 +73,6 @@ async def analyze_profile(
     resolved_github_user = github_username or parsed_profile.get("github_username")
     resolved_role = target_role or parsed_profile.get("target_role", "Backend Developer")
 
-    # Ingested dataset benchmarks
     role_benchmark = get_role_benchmark(resolved_role)
     dynamic_demand = role_benchmark["market_demand"]
 
@@ -99,25 +97,25 @@ async def analyze_profile(
         })
     }
 
-    # Core Person 3 Calculations
+    # 1. Scoring with configurable weights
     readiness = calculate_readiness(candidate_payload, dynamic_demand)
     gaps = analyze_skill_gaps(candidate_payload, dynamic_demand)
     roadmap = generate_roadmap(resolved_role, gaps)
 
-    # Multi-Role Fit Leaderboard
-    all_roles = ["Backend Developer", "Frontend Developer", "Full Stack Developer", "Data Engineer", "DevOps Engineer"]
-    role_fits = []
-    for r in all_roles:
+    # 2. 3-Role Comparison Leaderboard (Evaluates across at least 3 roles)
+    comparison_roles = ["Backend Developer", "Frontend Developer", "Data Engineer"]
+    role_comparison = []
+    for r in comparison_roles:
         r_bench = get_role_benchmark(r)
         r_demand = r_bench["market_demand"]
         total_w = sum(r_demand.values()) or 1
         score_w = sum(candidate_payload["evidence"].get(s, {}).get("score", 0) * d for s, d in r_demand.items())
-        role_fits.append({
+        role_comparison.append({
             "role": r,
             "fit_score": int(round(score_w / total_w)),
             "jobs_sampled": r_bench.get("jobs_analyzed", 500)
         })
-    role_fits.sort(key=lambda x: x["fit_score"], reverse=True)
+    role_comparison.sort(key=lambda x: x["fit_score"], reverse=True)
 
     return {
         "candidate": {
@@ -131,7 +129,7 @@ async def analyze_profile(
             "jobs_analyzed": role_benchmark["jobs_analyzed"],
             "real_market_demand": dynamic_demand
         },
-        "role_matches": role_fits,
+        "role_comparison": role_comparison,               # <-- 3-ROLE COMPARISON
         "github_analysis": {
             "connected": bool(resolved_github_user and "error" not in github_data),
             "repositories_analyzed": github_data.get("signals", {}).get("repositories_analyzed", 0),

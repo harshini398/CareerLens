@@ -1,0 +1,31 @@
+﻿{
+  "name": "Alex Rivera",
+  "headline": "Full-Stack Software Engineer | Python, React, Docker",
+  "experience": [
+    {
+      "company": "TechFlow Solutions",
+      "role": "Full-Stack Engineering Intern",
+      "duration": "6 months",
+      "start_date": "June 2025",
+      "end_date": "December 2025",
+      "description": "Engineered REST APIs using FastAPI and PostgreSQL. Built reusable React frontend components and configured Docker containerization with automated CI/CD pipelines."
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "year": "2025"
+    },
+    {
+      "name": "Meta Front-End Developer Professional Certificate",
+      "issuer": "Coursera / Meta",
+      "year": "2025"
+    }
+  ],
+  "education": {
+    "degree": "B.S. in Computer Science",
+    "institution": "State University of Technology",
+    "graduation_year": "2026"
+  }
+}

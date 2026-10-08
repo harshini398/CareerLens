@@ -1,0 +1,320 @@
+{
+  "candidate": {
+    "target_role": "Backend Developer",
+    "github_username": "harshini398",
+    "extracted_skills": [
+      {
+        "name": "Python",
+        "claimed_level": "Intermediate",
+        "source": "resume"
+      },
+      {
+        "name": "JavaScript",
+        "claimed_level": "Intermediate",
+        "source": "resume"
+      },
+      {
+        "name": "TypeScript",
+        "claimed_level": "Intermediate",
+        "source": "resume"
+      },
+      {
+        "name": "React",
+        "claimed_level": "Intermediate",
+        "source": "resume"
+      },
+      {
+        "name": "Node.js",
+        "claimed_level": "Intermediate",
+        "source": "resume"
+      },
+      {
+        "name": "FastAPI",
+        "claimed_level": "Intermediate",
+        "source": "resume"
+      },
+      {
+        "name": "SQL",
+        "claimed_level": "Intermediate",
+        "source": "resume"
+      },
+      {
+        "name": "PostgreSQL",
+        "claimed_level": "Intermediate",
+        "source": "resume"
+      },
+      {
+        "name": "Docker",
+        "claimed_level": "Intermediate",
+        "source": "resume"
+      },
+      {
+        "name": "AWS",
+        "claimed_level": "Intermediate",
+        "source": "resume"
+      },
+      {
+        "name": "Git",
+        "claimed_level": "Intermediate",
+        "source": "resume"
+      },
+      {
+        "name": "Testing",
+        "claimed_level": "Intermediate",
+        "source": "resume"
+      },
+      {
+        "name": "pytest",
+        "claimed_level": "Intermediate",
+        "source": "resume"
+      },
+      {
+        "name": "CI/CD",
+        "claimed_level": "Intermediate",
+        "source": "resume"
+      }
+    ],
+    "claims_count": 6
+  },
+  "market_benchmark": {
+    "source": "LinkedIn Job Postings Dataset",
+    "jobs_analyzed": 226,
+    "real_market_demand": {
+      "Python": 57,
+      "AWS": 42,
+      "SQL": 33,
+      "Testing": 29,
+      "Azure": 22,
+      "Kubernetes": 21,
+      "Docker": 19,
+      "CI/CD": 19
+    }
+  },
+  "role_comparison": [
+    {
+      "role": "Backend Developer",
+      "fit_score": 0,
+      "jobs_sampled": 226
+    },
+    {
+      "role": "Frontend Developer",
+      "fit_score": 0,
+      "jobs_sampled": 231
+    },
+    {
+      "role": "Data Engineer",
+      "fit_score": 0,
+      "jobs_sampled": 490
+    },
+    {
+      "role": "UI/UX Designer",
+      "fit_score": 0,
+      "jobs_sampled": 850
+    }
+  ],
+  "github_analysis": {
+    "connected": false,
+    "repositories_analyzed": 0,
+    "error": "GitHub user 'harshini398' returned status 403"
+  },
+  "readiness": {
+    "readiness_score": 38,
+    "activity_consistency_score": 80,
+    "confidence_score": 85,
+    "applied_weights": {
+      "tech": 0.3,
+      "project": 0.2,
+      "consistency": 0.15,
+      "engineering": 0.1,
+      "docs": 0.1,
+      "role": 0.15
+    },
+    "breakdown": {
+      "technical": 0,
+      "project_quality": 70,
+      "consistency": 80,
+      "engineering": 50,
+      "documentation": 65,
+      "role_alignment": 0
+    },
+    "waterfall": [
+      {
+        "factor": "Base Profile Baseline",
+        "delta": 50
+      },
+      {
+        "factor": "Technical Evidence",
+        "delta": -15
+      },
+      {
+        "factor": "Project Quality & Originality",
+        "delta": 4
+      },
+      {
+        "factor": "Activity & Consistency",
+        "delta": 4
+      },
+      {
+        "factor": "Role Alignment",
+        "delta": -8
+      }
+    ]
+  },
+  "skill_gaps": [
+    {
+      "skill": "Python",
+      "market_demand": "57%",
+      "candidate_score": 0,
+      "verification_status": "UNSUPPORTED",
+      "is_gap": true,
+      "gap": -70,
+      "priority_score": 39.9,
+      "reason": "No proof found across repositories (unsupported claim)."
+    },
+    {
+      "skill": "AWS",
+      "market_demand": "42%",
+      "candidate_score": 0,
+      "verification_status": "UNSUPPORTED",
+      "is_gap": true,
+      "gap": -70,
+      "priority_score": 29.4,
+      "reason": "No proof found across repositories (unsupported claim)."
+    },
+    {
+      "skill": "SQL",
+      "market_demand": "33%",
+      "candidate_score": 0,
+      "verification_status": "UNSUPPORTED",
+      "is_gap": true,
+      "gap": -70,
+      "priority_score": 23.1,
+      "reason": "No proof found across repositories (unsupported claim)."
+    },
+    {
+      "skill": "Testing",
+      "market_demand": "29%",
+      "candidate_score": 0,
+      "verification_status": "UNSUPPORTED",
+      "is_gap": true,
+      "gap": -70,
+      "priority_score": 20.3,
+      "reason": "No proof found across repositories (unsupported claim)."
+    },
+    {
+      "skill": "Azure",
+      "market_demand": "22%",
+      "candidate_score": 0,
+      "verification_status": "UNSUPPORTED",
+      "is_gap": true,
+      "gap": -70,
+      "priority_score": 15.4,
+      "reason": "No proof found across repositories (unsupported claim)."
+    },
+    {
+      "skill": "Kubernetes",
+      "market_demand": "21%",
+      "candidate_score": 0,
+      "verification_status": "UNSUPPORTED",
+      "is_gap": true,
+      "gap": -70,
+      "priority_score": 14.7,
+      "reason": "No proof found across repositories (unsupported claim)."
+    },
+    {
+      "skill": "Docker",
+      "market_demand": "19%",
+      "candidate_score": 0,
+      "verification_status": "UNSUPPORTED",
+      "is_gap": true,
+      "gap": -70,
+      "priority_score": 13.3,
+      "reason": "No proof found across repositories (unsupported claim)."
+    },
+    {
+      "skill": "CI/CD",
+      "market_demand": "19%",
+      "candidate_score": 0,
+      "verification_status": "UNSUPPORTED",
+      "is_gap": true,
+      "gap": -70,
+      "priority_score": 13.3,
+      "reason": "No proof found across repositories (unsupported claim)."
+    }
+  ],
+  "roadmap": {
+    "target_role": "Backend Developer",
+    "critical_deficits": [
+      "Python",
+      "AWS",
+      "SQL",
+      "Testing",
+      "Azure",
+      "Kubernetes",
+      "Docker",
+      "CI/CD"
+    ],
+    "milestones": [
+      {
+        "week": 1,
+        "title": "Automated Testing & Reliability",
+        "goal": "Write automated test coverage",
+        "tasks": [
+          "Install pytest or appropriate test runner",
+          "Write 10+ unit tests covering edge cases and auth",
+          "Verify test pass rate and coverage reports"
+        ],
+        "deliverable": "Repository with passing automated test suite"
+      },
+      {
+        "week": 2,
+        "title": "Containerization with Docker",
+        "goal": "Package application in reproducible containers",
+        "tasks": [
+          "Write a multi-stage Dockerfile",
+          "Create docker-compose.yml linking app and database",
+          "Verify container builds and runs locally"
+        ],
+        "deliverable": "Working Dockerfile and docker-compose.yml committed to GitHub"
+      },
+      {
+        "week": 3,
+        "title": "CI/CD & Cloud Deployment",
+        "goal": "Automate tests on commit and deploy live",
+        "tasks": [
+          "Configure GitHub Actions for CI test runs",
+          "Deploy the Docker container to a live cloud host",
+          "Add live deployment link to README"
+        ],
+        "deliverable": "Live deployment URL + passing CI badge"
+      },
+      {
+        "week": 4,
+        "title": "Architecture & Documentation Polish",
+        "goal": "Demonstrate professional proof-of-work",
+        "tasks": [
+          "Add system architecture diagrams to README",
+          "Document REST API endpoints or Swagger specs",
+          "Record a 2-minute demo video"
+        ],
+        "deliverable": "Production-grade portfolio project ready for review"
+      }
+    ],
+    "recommended_project": {
+      "title": "Production-Ready Backend Developer Architecture Project",
+      "description": "A single focused project tailored to simultaneously close your critical deficits.",
+      "features": [
+        "Modular architecture and database integration",
+        "Full unit test suite (>80% coverage)",
+        "Docker and docker-compose orchestration",
+        "GitHub Actions CI pipeline"
+      ],
+      "closes_gaps": [
+        "Python",
+        "AWS",
+        "SQL",
+        "Testing"
+      ]
+    }
+  }
+}

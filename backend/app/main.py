@@ -114,12 +114,8 @@ class WhatIfRequest(BaseModel):
 def health_check():
     return {"status": "CareerLens Backend Operational", "owner": "Integration Branch"}
 
-@app.post("/api/analyze/profile")
-async def analyze_profile(
-    resume_file: UploadFile = File(...),
-    github_username: Optional[str] = Form(None),
-    target_role: Optional[str] = Form("Backend Developer")
-):
+# Core analysis function logic used by multiple routes
+async def process_analysis_pipeline(resume_file: UploadFile, github_username: Optional[str], target_role: Optional[str]):
     if not resume_file.filename.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Only PDF files are supported.")
 
@@ -195,6 +191,75 @@ async def analyze_profile(
         "readiness": readiness,
         "skill_gaps": gaps,
         "roadmap": roadmap
+    }
+
+@app.post("/api/analyze/profile")
+async def analyze_profile(
+    resume_file: UploadFile = File(...),
+    github_username: Optional[str] = Form(None),
+    target_role: Optional[str] = Form("Backend Developer")
+):
+    return await process_analysis_pipeline(resume_file, github_username, target_role)
+
+# Compatibility alias route for candidate-specific frontend calls
+@app.post("/api/candidates/analyze")
+async def analyze_candidate_alias(
+    resume_file: UploadFile = File(...),
+    github_username: Optional[str] = Form(None),
+    target_role: Optional[str] = Form("Backend Developer")
+):
+    return await process_analysis_pipeline(resume_file, github_username, target_role)
+@app.post("/api/candidates")
+@app.post("/api/candidates/")
+async def create_candidate_stub(
+    github_username: Optional[str] = Form("sreya12-code"),
+    target_role: Optional[str] = Form("Backend Developer")
+):
+    return {"id": "C001", "name": "Candidate", "github_username": github_username, "target_role": target_role}
+
+@app.post("/api/candidates/{candidate_id}/analyze")
+async def analyze_candidate_by_id(
+    candidate_id: str,
+    github_username: Optional[str] = Form("sreya12-code"),
+    resume_file: UploadFile = File(None),
+    target_role: Optional[str] = Form("Backend Developer")
+):
+    # If resume is provided, parse it; otherwise use default file-less payload
+    if resume_file and resume_file.filename:
+        return await process_analysis_pipeline(resume_file, github_username, target_role)
+    
+    # Fallback response for frontend requests that pass data via JSON/Form without a file
+    role_benchmark = get_role_benchmark(target_role)
+    dynamic_demand = role_benchmark["market_demand"]
+    github_data = scan_github_profile(github_username)
+    
+    candidate_payload = {
+        "target_role": target_role,
+        "profile_sources": {"resume": False, "github": True},
+        "claimed_skills": [{"name": "Python", "claimed_level": "Advanced"}],
+        "claims": [],
+        "evidence": github_data.get("evidence", {}),
+        "github_signals": github_data.get("signals", {"repositories_analyzed": 4, "project_quality_score": 75})
+    }
+    
+    readiness = calculate_readiness(candidate_payload, dynamic_demand)
+    gaps = analyze_skill_gaps(candidate_payload, dynamic_demand)
+    roadmap = generate_roadmap(target_role, gaps)
+
+    return {
+        "candidate": {"id": candidate_id, "target_role": target_role, "github_username": github_username},
+        "readiness": readiness,
+        "skill_gaps": gaps,
+        "roadmap": roadmap
+    }
+
+@app.get("/api/candidates/{candidate_id}/analysis")
+async def get_candidate_analysis_stub(candidate_id: str):
+    return {
+        "candidate": {"id": candidate_id, "target_role": "Backend Developer"},
+        "readiness": {"readiness_score": 78, "confidence_score": 85},
+        "skill_gaps": [],
+        "roadmap": []
     }
 
 @app.post("/api/what-if")

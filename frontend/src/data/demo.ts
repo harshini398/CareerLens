@@ -3,9 +3,9 @@ import type { AnalysisResult, WhatIfResult } from '../types'
 export const demoAnalysis: AnalysisResult = {
   candidate: {
     id: 'C001',
-    name: 'Alex Morgan',
+    name: 'Pooja Sriram',
     targetRole: 'Backend Developer',
-    githubUsername: 'alexmorgan-dev',
+    githubUsername: 'poojasriram-dev',
   },
   readiness: {
     score: 68,

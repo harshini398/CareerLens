@@ -9,7 +9,14 @@ import {
 } from './pages'
 import { analyzeProfile } from './services/api'
 import type { AnalysisResult } from './types'
+import AdminWeights from './pages/AdminWeights'
+import CandidateCard from './components/CandidateCard'
+import Interview from './pages/Interview'
+import Onboarding from './pages/Onboarding'
+import Progress from './pages/Progress'
+import RecruiterJd from './pages/RecruiterJd'
 import './design.css'
+import './career.css'
 
 function App() {
   const [analysis, setAnalysis] = useState<AnalysisResult>(demoAnalysis)
@@ -44,6 +51,12 @@ function App() {
             <Route path="/what-if" element={<WhatIfPage />} />
             <Route path="/placement" element={<PlacementPage />} />
           </Route>
+          <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/progress" element={<Progress />} />
+          <Route path="/admin/weights" element={<AdminWeights />} />
+          <Route path="/recruiter/jd" element={<RecruiterJd />} />
+          <Route path="/interview" element={<Interview />} />
+          <Route path="/candidate-card" element={<CandidateCard />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>

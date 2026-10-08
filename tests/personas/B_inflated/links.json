@@ -1,0 +1,10 @@
+{
+  "github": "https://github.com/kevin-dev-mock",
+  "leetcode": "https://leetcode.com/u/kevin_coder_mock",
+  "kaggle": null,
+  "portfolio": null,
+  "linkedin_file": "linkedin.json",
+  "metrics_override": {
+    "leetcode_solved_actual": 38
+  }
+}

@@ -1,0 +1,35 @@
+Kevin Vance
+kevin.vance@example.com | +1-555-0182 | github.com/kevin-dev
+Target Role: Senior Full Stack & Cloud Architect
+
+SUMMARY
+Experienced software engineer with deep expertise across cloud orchestration, microservices, front-end architecture, and machine learning pipelines. Solved 500+ LeetCode algorithms with top 1% efficiency.
+
+TECHNICAL SKILLS
+Languages: Python, JavaScript, TypeScript, Go
+Frontend: React, Next.js, Redux, TailwindCSS
+Backend & Cloud: Node.js, FastAPI, Docker, Kubernetes, AWS, Terraform, CI/CD, Microservices
+Databases: PostgreSQL, MongoDB, Redis
+Machine Learning: TensorFlow, PyTorch
+
+PROFESSIONAL EXPERIENCE
+Cloud & Backend Engineering Intern | Apex Cloud Systems
+Duration: 8 Months (Jan 2025 - Aug 2025)
+- Architected enterprise Kubernetes clusters and managed multi-region AWS deployments using Terraform.
+- Built scalable event-driven microservices using FastAPI and Kafka, reducing latency by 45%.
+- Containerized 20+ legacy backend microservices using Docker and automated CI/CD deployment pipelines.
+
+PROJECTS
+1. Distributed AI Microservices Platform
+- Implemented deep learning inference pipelines using TensorFlow and PyTorch.
+- Orchestrated 12 microservices with Docker Compose and Kubernetes.
+
+2. Full-Stack E-Commerce Enterprise App
+- Developed high-performance React front-end application with state management.
+- Integrated Redis caching and PostgreSQL database layer.
+
+CERTIFICATIONS
+1. AWS Certified Solutions Architect - Associate
+2. Certified Kubernetes Administrator (CKA)
+3. HashiCorp Certified: Terraform Associate
+4. Meta Front-End Developer Professional Certificate

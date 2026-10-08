@@ -1,28 +1,34 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from app.api.mock_analysis import router as mock_router
 from app.api.candidates import router as candidates_router
 from app.api.integration import router as integration_router
+from app.api.what_if import router as what_if_router
+
 from app.models.database import engine, Base
 from app.models.models import CandidateModel, ReadinessScoreModel, AnalysisRunModel
 
-# Create database tables including the new analysis run table
-Base.metadata.create_all(bind=engine)
-
+# 1. Initialize FastAPI app FIRST
 app = FastAPI(title="CareerLens API", version="1.0.0")
 
-# Enable CORS so your frontend can communicate with the backend
+# 2. Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows requests from any frontend origin during development
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# 3. Create database tables
+Base.metadata.create_all(bind=engine)
+
+# 4. Include all routers
 app.include_router(mock_router)
 app.include_router(candidates_router)
 app.include_router(integration_router)
+app.include_router(what_if_router)
 
 @app.get("/")
 def read_root():

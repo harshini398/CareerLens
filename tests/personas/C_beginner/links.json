@@ -1,0 +1,10 @@
+{
+  "github": "https://github.com/rohan-builds-mock",
+  "leetcode": "https://leetcode.com/u/rohan_dev",
+  "kaggle": null,
+  "portfolio": null,
+  "linkedin_file": "linkedin.json",
+  "metrics_override": {
+    "leetcode_solved_actual": 22
+  }
+}

@@ -1,0 +1,20 @@
+Rohan Mehta
+rohan.mehta@example.com | github.com/rohan-builds
+Target Role: Junior Web Developer
+
+EDUCATION
+B.Tech in Computer Science, Tier-2 Institute (2022 - 2026)
+
+SKILLS
+Python, JavaScript, HTML, CSS, Git
+
+PROJECTS
+1. Task Tracker Web App
+- Built a responsive task management app using HTML, CSS, and JavaScript.
+- Implemented local storage for persistent browser state.
+
+2. Python Log Analyzer
+- Wrote automated Python script to parse server error logs.
+
+CERTIFICATIONS
+- freeCodeCamp Responsive Web Design Certification

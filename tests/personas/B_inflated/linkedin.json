@@ -1,0 +1,30 @@
+{
+  "profile": {
+    "name": "Kevin Vance",
+    "headline": "Student at State University | Aspiring Developer",
+    "location": "San Francisco, CA"
+  },
+  "experience": [
+    {
+      "role": "Software Intern",
+      "company": "Apex Cloud Systems",
+      "duration": "3 Months (Jun 2025 - Aug 2025)",
+      "description": "Assisted senior engineers with basic script maintenance and bug fixes."
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "year": "2025"
+    }
+  ],
+  "skills": [
+    "Python",
+    "Git"
+  ],
+  "activity": {
+    "post_count": 1,
+    "last_active": "5 months ago"
+  }
+}

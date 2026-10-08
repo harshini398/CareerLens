@@ -1,0 +1,7 @@
+Aarav Sharma
+aarav.sharma@example.com | github.com/rohan-builds
+Target Role: Junior Web Developer
+EDUCATION: B.Tech in Computer Science, IIT Bombay (2022 - 2026)
+SKILLS: Python, JavaScript, HTML, CSS, Git
+PROJECTS: Task Tracker Web App, Python Log Analyzer
+CERTIFICATIONS: freeCodeCamp Responsive Web Design

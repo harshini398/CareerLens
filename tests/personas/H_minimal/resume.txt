@@ -1,0 +1,9 @@
+Sam Lee
+sam.lee@example.com
+Target Role: Software Intern
+
+EDUCATION
+B.Sc Computer Science (2023 - 2027)
+
+SKILLS
+Python, C++, Java

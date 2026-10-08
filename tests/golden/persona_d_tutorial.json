@@ -1,0 +1,14 @@
+{
+  "username": "persona_d_tutorial",
+  "profile": {"public_repos": 2, "created_at": "2025-05-01T00:00:00Z"},
+  "repositories": [
+    {
+      "name": "todo-app",
+      "updated_at": "2025-06-01T00:00:00Z",
+      "languages": {"JavaScript": 20000},
+      "root_files": ["index.html", "script.js"],
+      "commits": [{"sha": "d1", "message": "all code", "date": "2025-06-01"}],
+      "manifests": {}
+    }
+  ]
+}

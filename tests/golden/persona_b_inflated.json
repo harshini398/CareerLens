@@ -1,0 +1,14 @@
+{
+  "username": "persona_b_inflated",
+  "profile": {"public_repos": 1, "created_at": "2026-06-01T00:00:00Z"},
+  "repositories": [
+    {
+      "name": "simple-script",
+      "updated_at": "2026-08-01T00:00:00Z",
+      "languages": {"Python": 4000},
+      "root_files": ["main.py", "README.md"],
+      "commits": [{"sha": "c1", "message": "initial commit", "date": "2026-08-01"}],
+      "manifests": {}
+    }
+  ]
+}

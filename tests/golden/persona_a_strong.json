@@ -1,0 +1,38 @@
+{
+  "username": "persona_a_strong",
+  "profile": {"public_repos": 6, "created_at": "2023-01-01T00:00:00Z"},
+  "repositories": [
+    {
+      "name": "ecommerce-api",
+      "updated_at": "2026-10-01T00:00:00Z",
+      "languages": {"Python": 120000},
+      "root_files": ["Dockerfile", "docker-compose.yml", "requirements.txt", "README.md", ".github", "tests"],
+      "commits": [
+        {"sha": "a1", "message": "feat: init fastAPI project", "date": "2026-05-01"},
+        {"sha": "a2", "message": "feat: add user authentication", "date": "2026-05-15"},
+        {"sha": "a3", "message": "feat: postgresql models and schema", "date": "2026-06-01"},
+        {"sha": "a4", "message": "feat: order processing endpoints", "date": "2026-06-20"},
+        {"sha": "a5", "message": "test: add pytest test suites", "date": "2026-07-10"},
+        {"sha": "a6", "message": "ci: add github actions workflow", "date": "2026-08-01"},
+        {"sha": "a7", "message": "docker: add multi-stage Dockerfile", "date": "2026-08-15"},
+        {"sha": "a8", "message": "refactor: performance tuning", "date": "2026-09-01"},
+        {"sha": "a9", "message": "docs: complete API documentation", "date": "2026-09-20"},
+        {"sha": "a10", "message": "fix: jwt token expiry edge case", "date": "2026-10-01"}
+      ],
+      "manifests": {"requirements.txt": "fastapi uvicorn pytest pydantic sqlalchemy"}
+    },
+    {
+      "name": "storefront-web",
+      "updated_at": "2026-09-20T00:00:00Z",
+      "languages": {"TypeScript": 95000, "JavaScript": 15000},
+      "root_files": ["package.json", "README.md", "tests"],
+      "commits": [
+        {"sha": "b1", "message": "feat: init react project", "date": "2026-06-01"},
+        {"sha": "b2", "message": "feat: responsive product grid", "date": "2026-07-01"},
+        {"sha": "b3", "message": "feat: shopping cart state", "date": "2026-08-01"},
+        {"sha": "b4", "message": "test: react testing library components", "date": "2026-09-20"}
+      ],
+      "manifests": {"package.json": "react react-dom jest typescript"}
+    }
+  ]
+}

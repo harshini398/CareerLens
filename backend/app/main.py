@@ -78,6 +78,19 @@ app.add_middleware(
 # Initialize database tables
 Base.metadata.create_all(bind=engine)
 
+# Include secondary routers safely if they exist
+try:
+    from app.api.candidates import router as candidates_router
+    app.include_router(candidates_router)
+except ImportError:
+    pass
+
+try:
+    from app.api.recruiter_config import router as recruiter_config_router
+    app.include_router(recruiter_config_router)
+except ImportError:
+    pass
+
 class WhatIfRequest(BaseModel):
     candidate_data: Dict[str, Any] = Field(
         default={

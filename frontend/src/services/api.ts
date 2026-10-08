@@ -91,7 +91,7 @@ export async function registerCandidate(candidate: CandidateRegistration) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       id: candidate.id || 'C001',
-      name: candidate.name || 'Alex',
+      name: candidate.name || 'Pooja Sriram',
       email: candidate.email || 'alex@example.com',
       target_role: candidate.target_role,
     }),
@@ -151,7 +151,7 @@ export async function analyzeProfile(input: ProfileInput): Promise<AnalysisResul
   try {
     const regRes = await registerCandidate({
       id: 'C001',
-      name: input.name || 'Alex',
+      name: input.name || 'Pooja Sriram',
       email: input.email || 'alex@example.com',
       target_role: input.targetRole,
     })

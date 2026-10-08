@@ -9,7 +9,13 @@ import {
 } from './pages'
 import { analyzeProfile } from './services/api'
 import type { AnalysisResult } from './types'
+import { InterviewChatPage } from './pages/InterviewChatPage'
+import { ProgressPage } from './pages/ProgressPage'
+import { RecruiterJdPage } from './pages/RecruiterJdPage'
+import { WeightAdminPage } from './pages/WeightAdminPage'
+import Onboarding from './pages/Onboarding'
 import './design.css'
+import './career.css'
 
 function App() {
   const [analysis, setAnalysis] = useState<AnalysisResult>(demoAnalysis)
@@ -37,9 +43,14 @@ function App() {
           <Route path="/analysis" element={<Layout />}><Route index element={<AnalysisPage />} /></Route>
           <Route element={<Layout />}>
             <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/gaps" element={<GapsPage />} />
+            <Route path="/progress" element={<ProgressPage />} />
+            <Route path="/interview" element={<InterviewChatPage />} />
+            <Route path="/recruiter/jd" element={<RecruiterJdPage />} />
+            <Route path="/admin/weights" element={<WeightAdminPage />} />
+            <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/evidence" element={<EvidencePage />} />
             <Route path="/roles" element={<RolesPage />} />
-            <Route path="/gaps" element={<GapsPage />} />
             <Route path="/roadmap" element={<RoadmapPage />} />
             <Route path="/what-if" element={<WhatIfPage />} />
             <Route path="/placement" element={<PlacementPage />} />

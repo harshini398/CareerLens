@@ -97,13 +97,12 @@ async def analyze_profile(
         })
     }
 
-    # 1. Scoring with configurable weights
     readiness = calculate_readiness(candidate_payload, dynamic_demand)
     gaps = analyze_skill_gaps(candidate_payload, dynamic_demand)
     roadmap = generate_roadmap(resolved_role, gaps)
 
-    # 2. 3-Role Comparison Leaderboard (Evaluates across at least 3 roles)
-    comparison_roles = ["Backend Developer", "Frontend Developer", "Data Engineer"]
+    # Multi-Role Comparison including UI/UX Designer!
+    comparison_roles = ["Backend Developer", "Frontend Developer", "Data Engineer", "UI/UX Designer"]
     role_comparison = []
     for r in comparison_roles:
         r_bench = get_role_benchmark(r)
@@ -129,7 +128,7 @@ async def analyze_profile(
             "jobs_analyzed": role_benchmark["jobs_analyzed"],
             "real_market_demand": dynamic_demand
         },
-        "role_comparison": role_comparison,               # <-- 3-ROLE COMPARISON
+        "role_comparison": role_comparison,
         "github_analysis": {
             "connected": bool(resolved_github_user and "error" not in github_data),
             "repositories_analyzed": github_data.get("signals", {}).get("repositories_analyzed", 0),

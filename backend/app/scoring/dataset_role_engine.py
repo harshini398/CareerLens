@@ -9,7 +9,6 @@ import sys
 import json
 from typing import Dict, Any
 
-# Increase CSV field size limit for large job descriptions
 csv.field_size_limit(10 * 1024 * 1024)
 
 DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../data"))
@@ -22,7 +21,9 @@ TRACKED_SKILLS = [
     "Python", "JavaScript", "TypeScript", "React", "Next.js", "Node.js", 
     "FastAPI", "Flask", "Django", "SQL", "PostgreSQL", "MySQL", "MongoDB", 
     "Docker", "Kubernetes", "AWS", "Azure", "GCP", "Git", "Testing", "pytest", 
-    "CI/CD", "Machine Learning", "REST APIs", "Data Pipelines"
+    "CI/CD", "Machine Learning", "REST APIs", "Data Pipelines",
+    # UI/UX Core Skills
+    "Figma", "UI/UX", "Wireframing", "Prototyping", "User Research", "HTML/CSS"
 ]
 
 ROLE_KEYWORDS = {
@@ -30,23 +31,17 @@ ROLE_KEYWORDS = {
     "Frontend Developer": ["frontend", "front-end", "ui engineer", "react developer", "web developer"],
     "Full Stack Developer": ["full stack", "fullstack", "full-stack"],
     "Data Engineer": ["data engineer", "etl", "data pipeline", "big data"],
-    "DevOps Engineer": ["devops", "site reliability", "sre", "cloud engineer", "infrastructure"]
+    "DevOps Engineer": ["devops", "site reliability", "sre", "cloud engineer", "infrastructure"],
+    "UI/UX Designer": ["ui/ux", "product designer", "user experience", "ui designer", "figma", "wireframe"]
 }
 
 def analyze_market_demand(max_samples_per_role: int = 1500) -> Dict[str, Any]:
-    """
-    Parses postings.csv and calculates true skill percentages.
-    Caches the results to market_benchmarks.json.
-    """
     if os.path.exists(CACHE_FILE):
         with open(CACHE_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
 
     if not CSV_PATH or not os.path.exists(CSV_PATH):
-        print(f"Warning: postings.csv not found in {DATA_DIR}. Using baseline.")
         return get_fallback_benchmarks()
-
-    print(f"Analyzing real LinkedIn postings from: {os.path.basename(CSV_PATH)}...", flush=True)
 
     role_descriptions = {role: [] for role in ROLE_KEYWORDS}
 
@@ -63,7 +58,6 @@ def analyze_market_demand(max_samples_per_role: int = 1500) -> Dict[str, Any]:
         for row in reader:
             if len(row) <= max(title_idx, desc_idx):
                 continue
-
             title = row[title_idx].lower()
             desc = row[desc_idx]
 
@@ -73,51 +67,39 @@ def analyze_market_demand(max_samples_per_role: int = 1500) -> Dict[str, Any]:
                 if any(kw in title for kw in keywords):
                     role_descriptions[role_name].append(desc)
 
-            # Stop early once we have enough data across all roles
-            if all(len(descs) >= max_samples_per_role for descs in role_descriptions.values()):
-                break
-
     benchmarks = {}
-
     for role_name, descriptions in role_descriptions.items():
         total_jobs = len(descriptions)
         if total_jobs == 0:
             continue
 
         skill_counts = {s: 0 for s in TRACKED_SKILLS}
-
         for desc in descriptions:
             desc_lower = desc.lower()
             for skill in TRACKED_SKILLS:
                 if re.search(rf"\b{re.escape(skill.lower())}\b", desc_lower):
                     skill_counts[skill] += 1
 
-        # Calculate percentage
         demand = {}
         for skill, count in skill_counts.items():
             pct = int(round((count / total_jobs) * 100))
-            if pct >= 15:  # Keep skills appearing in >= 15% of postings
+            if pct >= 15:
                 demand[skill] = pct
-
-        # Sort descending by market demand
-        sorted_demand = dict(sorted(demand.items(), key=lambda x: x[1], reverse=True))
 
         benchmarks[role_name] = {
             "jobs_analyzed": total_jobs,
-            "market_demand": sorted_demand,
+            "market_demand": dict(sorted(demand.items(), key=lambda x: x[1], reverse=True)),
             "min_verification_score": 70
         }
 
-    # Save cache
     with open(CACHE_FILE, "w", encoding="utf-8") as f:
         json.dump(benchmarks, f, indent=2)
 
-    print("Market benchmarks generated and cached successfully!", flush=True)
     return benchmarks
 
 def get_role_benchmark(role_name: str) -> Dict[str, Any]:
     benchmarks = analyze_market_demand()
-    return benchmarks.get(role_name, benchmarks.get("Backend Developer", {
+    return benchmarks.get(role_name, get_fallback_benchmarks().get(role_name, {
         "jobs_analyzed": 500,
         "market_demand": {"Python": 80, "SQL": 70, "Docker": 60, "REST APIs": 60},
         "min_verification_score": 70
@@ -126,5 +108,9 @@ def get_role_benchmark(role_name: str) -> Dict[str, Any]:
 def get_fallback_benchmarks():
     return {
         "Backend Developer": {"jobs_analyzed": 1000, "market_demand": {"Python": 82, "SQL": 74, "REST APIs": 68, "Docker": 55, "Testing": 50}, "min_verification_score": 70},
-        "Frontend Developer": {"jobs_analyzed": 1000, "market_demand": {"JavaScript": 85, "React": 80, "TypeScript": 72, "Git": 65, "Testing": 50}, "min_verification_score": 70}
+        "Frontend Developer": {"jobs_analyzed": 1000, "market_demand": {"JavaScript": 85, "React": 80, "TypeScript": 72, "Git": 65, "Testing": 50}, "min_verification_score": 70},
+        "Full Stack Developer": {"jobs_analyzed": 1000, "market_demand": {"JavaScript": 80, "React": 78, "Python": 70, "SQL": 70, "Docker": 60}, "min_verification_score": 70},
+        "Data Engineer": {"jobs_analyzed": 1000, "market_demand": {"Python": 88, "SQL": 85, "Data Pipelines": 75, "Cloud": 60, "Git": 55}, "min_verification_score": 70},
+        "DevOps Engineer": {"jobs_analyzed": 1000, "market_demand": {"Docker": 90, "Kubernetes": 80, "CI/CD": 75, "AWS": 70, "Git": 65}, "min_verification_score": 70},
+        "UI/UX Designer": {"jobs_analyzed": 850, "market_demand": {"Figma": 88, "UI/UX": 85, "Wireframing": 72, "Prototyping": 68, "User Research": 60, "HTML/CSS": 55}, "min_verification_score": 70}
     }

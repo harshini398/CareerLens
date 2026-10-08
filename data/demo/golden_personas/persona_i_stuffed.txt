@@ -1,0 +1,8 @@
+John Doe | j.doe@example.com
+
+SKILLS:
+Python Python Python Django Django FastAPI SQL SQL SQL AWS AWS AWS Docker Docker Docker Kubernetes
+
+PROJECTS:
+Python Project: Built Python API using Python and SQL with Python frameworks.
+Cloud Project: Deployed Docker container to AWS Docker cluster using Docker compose.

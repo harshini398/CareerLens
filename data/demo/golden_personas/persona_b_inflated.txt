@@ -1,0 +1,13 @@
+Kevin Vance
+kevin@vance.io | github.com/kevin-dev
+
+TARGET ROLE: Senior Cloud Architect & Backend Lead
+
+SKILLS:
+Python, Docker, Kubernetes, AWS, Terraform, React, Kafka, Redis, PyTorch, GraphQL, Go, Microservices, CI/CD, SQL, Elasticsearch
+
+EXPERIENCE:
+Freelance Software Developer (2024 - Present)
+- Worked with cutting edge cloud tools including Kubernetes and Docker.
+- Handled deployment pipelines and backend architecture.
+- Developed applications using React and PyTorch machine learning models.
